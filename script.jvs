@@ -1,0 +1,21 @@
+// Simple scroll animation
+const packages = document.querySelectorAll('.package');
+
+window.addEventListener('scroll', () => {
+    packages.forEach(pkg => {
+        const position = pkg.getBoundingClientRect().top;
+        const screenPosition = window.innerHeight / 1.2;
+
+        if (position < screenPosition) {
+            pkg.style.opacity = 1;
+            pkg.style.transform = "translateY(0)";
+        }
+    });
+});
+
+// Initial styles
+packages.forEach(pkg => {
+    pkg.style.opacity = 0;
+    pkg.style.transform = "translateY(50px)";
+    pkg.style.transition = "all 0.5s ease";
+});
